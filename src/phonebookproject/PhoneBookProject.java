@@ -18,12 +18,34 @@ public class PhoneBookProject {
 
     public static void main(String[] args) {
         File myFile = new File("PhoneBook.txt");
+        PhoneBook book = null;
         try {
-            PhoneBook book = new PhoneBook(myFile);
-            book.printAllRecordsSortedByName();
+            book = new PhoneBook(myFile);
+
         } catch (IOException ex) {
-            Logger.getLogger(PhoneBookProject.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PhoneBookProject.class.getName()).log(Level.SEVERE, ex.getMessage(), ex);
         }
+        book.addRecord("Aa", "+359878224477");
+        book.addRecord("Casd", "+359878224477");
+        book.addRecord("Bbb", "+359878224477");
+        System.out.println("------------------all records sorted by name-----------------");
+        book.printAllRecordsSortedByName();
+
+        book.makeCallTo("Aa");
+        book.makeCallTo("Aa");
+        book.makeCallTo("Casd");
+        book.makeCallTo("Casd");
+        book.makeCallTo("Casd");
+        book.makeCallTo("Bbb");
+        book.makeCallTo("Zazo");
+        book.makeCallTo("Zazo");
+        book.makeCallTo("Zazo");
+        book.makeCallTo("Zazo");
+        book.makeCallTo("Zazo");
+        book.makeCallTo("Anna");
+        book.makeCallTo("Mariq");
+        System.out.println("--------------------top 5 outgoint calls------------------");
+        book.printTop5OutgoingCalls();
     }
 
 }
